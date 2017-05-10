@@ -1,16 +1,26 @@
 'use strict';
 
 const router = require('express').Router();
-var Hotel = require('../../models/hotel');
-var Restaurant = require('../../models/restaurant');
-var Activity = require('../../models/activity');
+const Promise = require('bluebird');
+const Hotel = require('../../models/hotel');
+const Restaurant = require('../../models/restaurant');
+const Activity = require('../../models/activity');
 
-router.use('/', (req, res, next) => {
-  Hotel.findAll()
-  .then(function(hotels) {
-    res.json(hotels);
+// GET: /api/options
+router.get('/', (req, res, next) => {
+  Promise.all([
+    Hotel.findAll(),
+    Restaurant.findAll(),
+    Activity.findAll()
+  ])
+  .spread(function(dbHotels, dbRestaurants, dbActivities) {
+    res.json({dbHotels, dbRestaurants, dbActivities});
   })
-  .catch(next)
+  // Hotel.findAll()
+  // .then(function(hotels) {
+  //   res.json(hotels);
+  // })
+  // .catch(next)
 })
 
 module.exports = router;

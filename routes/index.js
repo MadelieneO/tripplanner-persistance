@@ -1,8 +1,8 @@
-var Promise = require('bluebird');
-var router = require('express').Router();
-var Hotel = require('../models/hotel');
-var Restaurant = require('../models/restaurant');
-var Activity = require('../models/activity');
+const Promise = require('bluebird');
+const router = require('express').Router();
+const Hotel = require('../models/hotel');
+const Restaurant = require('../models/restaurant');
+const Activity = require('../models/activity');
 const optionsRouter = require('./api/options');
 
 router.use('/api/options', optionsRouter);

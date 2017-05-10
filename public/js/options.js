@@ -1,5 +1,5 @@
 'use strict';
-/* global $ tripModule attractionsModule hotels restaurants activities */
+/* global $ tripModule attractionsModule */
 
 /**
  * This module fills the `select` tags with `option`s.
@@ -12,20 +12,15 @@
 $(function () {
     let hotels = [];
 
+    // Get all hotels, restaurants and activities to be displayed in the dropdown.
     $.get('/api/options')
-    .then(function (allHotels) {
-        console.log('~~~~ all hotels: ', allHotels);
-        // restaurants.forEach(function(restaurant){
-        //     console.log(restaurant.name);
-        // })
+    .then(function (dbAllAttractions) {
+        const {dbHotels, dbRestaurants, dbActivities} = dbAllAttractions;
+        console.log('~~~~ all hotels: ', dbHotels);
+        console.log('~~~~ all restaurants: ', dbRestaurants);
+        console.log('~~~~ all activities: ', dbActivities);
     })
     .catch( console.error.bind(console) );
-
-    // $.ajax()
-    // .then(function(hotelsFromDb) {
-    //   console.log('~~~~~~ HOTELS: ', hotelsFromDb);
-    // })
-    // .catch(next)
 
     // jQuery selects
     var $optionsPanel = $('#options-panel');
