@@ -13,14 +13,10 @@ router.get('/', (req, res, next) => {
     Restaurant.findAll(),
     Activity.findAll()
   ])
-  .spread(function(dbHotels, dbRestaurants, dbActivities) {
-    res.json({dbHotels, dbRestaurants, dbActivities});
-  })
-  // Hotel.findAll()
-  // .then(function(hotels) {
-  //   res.json(hotels);
+  .then(dbResult => res.json(dbResult))
+  // .spread(function(dbHotels, dbRestaurants, dbActivities) {
+  //   res.json({dbHotels, dbRestaurants, dbActivities});
   // })
-  // .catch(next)
 })
 
 module.exports = router;
