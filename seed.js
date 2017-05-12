@@ -7,6 +7,7 @@ var Place = require('./models/place');
 var Hotel = require('./models/hotel');
 var Restaurant = require('./models/restaurant');
 var Activity = require('./models/activity');
+//const Day = require('./models/day');
 
 var data = {
   hotel: [
@@ -74,6 +75,9 @@ db.sync({force: true})
     });
   });
 })
+// .then(function () { // code creates first day, as opposed to seed file
+//   return Day.create({number: 1});
+// })
 .then(function () {
   console.log("Finished inserting data");
 })

@@ -11,6 +11,11 @@ Restaurant.belongsTo(Place);
 Activity.belongsTo(Place);
 
 Day.belongsTo(Hotel);          // 1 day can have 1 hotel
+// creates join tables:
+// ex day_restaurant:
+//                     day  restaurantId
+//                      1       3
+//                      1       8
 Day.belongsToMany(Restaurant, { through: 'day_restaurant' }); // 1 Day can have many Restaurants
 Day.belongsToMany(Activity, { through: 'day_activity' });   // 1 Day can have many Activities
 

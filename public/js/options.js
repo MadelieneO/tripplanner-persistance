@@ -17,7 +17,11 @@ $(function () {
     var $activitySelect = $optionsPanel.find('#activity-choices');
 
     // Get all hotels, restaurants and activities to be displayed in the dropdown.
-    $.get('/api/options')
+    //$.get('/api/options')  //... OR
+    $.ajax({
+        method: 'GET',
+        url:    '/api/options'
+    })
     .then(function (dbAllAttractions) {
         //const {hotels, restaurants, activities} = dbAllAttractions;
         let hotels = dbAllAttractions[0];
@@ -54,8 +58,6 @@ $(function () {
         // get associated attraction and add it to the current day in the trip
         var attraction = attractionsModule.getByTypeAndId(type, id);
         tripModule.addToCurrent(attraction);
-        // save new attraction to current day in db (day has already been created/saved to db)
-        //...
     });
 
 });

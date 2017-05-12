@@ -52,6 +52,9 @@ var tripModule = (function () {
     // console.log('~~~~ new day: ', newDay)
     days.push(newDay);
 
+    // NOTE: MAY NEED TO CREATE A CHECK BELOW - IF DAY ALREADY EXISTS
+    //       (SPECIFICALLY FOR THE FIRST DAY - IF THE SEED.JS FILE WAS
+    //       USED, THEN DAY 1 ALREADY EXIST)
     // create a day in DB:
     $.ajax({
       url: '/api/days/',
